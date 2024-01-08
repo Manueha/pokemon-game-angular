@@ -24,6 +24,9 @@ export class GameComponent implements OnInit {
   imageWidth: number = this.normalWidth;
   imageHeight: number = this.normalHeight;
 
+  nombreUsuario: string = '';
+
+
   onMouseEnter() {
     this.imageWidth = this.reducitWidth;
     this.imageHeight = this.reducitHeight;
@@ -72,6 +75,10 @@ export class GameComponent implements OnInit {
   ngOnInit(): void {
     this.playerService.resetGame();
     this.newGame();
+    const storedUsername = localStorage.getItem('nombreUsuario');
+    if (storedUsername) {
+      this.nombreUsuario = storedUsername;
+    }
   }
 
   onSelect(pokemonName: string) {
