@@ -16,11 +16,29 @@ export class GameComponent implements OnInit {
   private _pokemonSelected: string = '';
   private _pokemons: Pokemon[] = [];
   private _pokemon!: Pokemon;
+  normalWidth: number = 275;
+  normalHeight: number = 200;
+  reducitWidth: number = 100;
+  reducitHeight: number = 100;
+
+  imageWidth: number = this.normalWidth;
+  imageHeight: number = this.normalHeight;
+
+  onMouseEnter() {
+    this.imageWidth = this.reducitWidth;
+    this.imageHeight = this.reducitHeight;
+  }
+
+  onMouseLeave() {
+    this.imageWidth = this.normalWidth;
+    this.imageHeight = this.normalHeight;
+  }
+
 
   get score(): number {
     return this.playerService.score;
   }
-  
+
   get hearts(): Array<any> {
     return Array(this.playerService.lifes);
   }
@@ -68,7 +86,7 @@ export class GameComponent implements OnInit {
       this.playerService.decreaseLifes();
       console.log('incorrect');
     }
-    
+
   }
 
   // this function es execute every time that user click in next game
